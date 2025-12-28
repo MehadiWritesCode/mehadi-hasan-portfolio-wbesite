@@ -5,7 +5,7 @@ import Image from "next/image";
 
 export default function Hero() {
   return (
-    <section className="relative w-full flex items-center justify-center bg-white dark:bg-[#050505] transition-colors duration-500 overflow-hidden font-sans pt-10 lg:pt-32">
+    <section id="home" className="relative w-full flex items-center justify-center bg-white dark:bg-[#050505] transition-colors duration-500 overflow-hidden font-sans pt-10 lg:pt-32">
 
       {/* Ultra Subtle Radial Background */}
       <div className="absolute inset-0 z-0 opacity-[0.03] dark:opacity-[0.05] pointer-events-none"

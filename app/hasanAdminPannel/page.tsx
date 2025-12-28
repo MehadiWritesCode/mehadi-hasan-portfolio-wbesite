@@ -2,7 +2,7 @@ import AdminLogin from "../Components/AdminLoginPage";
 
 const adminPannel = () => {
 
-  return <>
+  return<>
   <AdminLogin/>
   </>
 }

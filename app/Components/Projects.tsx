@@ -21,20 +21,6 @@ const projects = [
     desc: "City management platform with real-time conquering mechanics and territory building.",
     tags: ["React", "Firebase"],
     link: "#"
-  },
-  {
-    title: "ShortestBridge",
-    type: "Algorithm Tool",
-    desc: "Graph visualization tool calculating the most efficient paths between nodes in real-time.",
-    tags: ["JS", "Canvas"],
-    link: "#"
-  },
-  {
-    title: "EcoTracker",
-    type: "Data Dashboard",
-    desc: "Environmental monitoring dashboard for tracking carbon footprints and sustainability metrics.",
-    tags: ["TypeScript", "Next.js"],
-    link: "#"
   }
 ];
 

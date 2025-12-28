@@ -1,4 +1,5 @@
 "use client"
+//import { useRouter } from 'next/router';
 import React, { useState } from 'react';
 import {
   Lock,
@@ -11,17 +12,44 @@ import {
   Zap
 } from 'lucide-react';
 
+import { supabase } from '../../lib/supabase';
 const AdminLogin = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({ email: '', password: '' });
+ // const router = useRouter();
+const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+  setIsLoading(true);
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsLoading(true);
-    // Login logic ekhane hobe
-    setTimeout(() => setIsLoading(false), 2000);
-  };
+  try {
+    const { data: adminData, error } = await supabase
+      .from('admin')
+      .select('*')
+      .eq('email', formData.email)
+      .single();
+
+    if (error || !adminData) {
+      console.error('Error or Admin not found:', error?.message);
+      alert('Access Denied. Invalid credentials.');
+    } else {
+      // Password check
+      if (adminData.password === formData.password) {
+        alert('Access Granted. Welcome to your admin dashboard!');
+        console.log('Admin authenticated:', adminData);
+      //  router.push('/components/dashboard');
+      } else {
+        alert('Access Denied. Invalid credentials.');
+      }
+    }
+  } catch (err) {
+    console.error('Unexpected error:', err);
+    alert('An unexpected error occurred.');
+  } finally {
+    // Jetai hok, loading bondho hobe
+    setIsLoading(false);
+  }
+};
 
   return (
     <div className="min-h-screen bg-white dark:bg-zinc-950 flex items-center justify-center p-6 font-sans transition-colors duration-300">
